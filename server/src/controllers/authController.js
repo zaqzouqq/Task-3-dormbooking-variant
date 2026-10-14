@@ -5,7 +5,7 @@ import { User } from '../models/User.js';
 
 const registerSchema = Joi.object({
   name: Joi.string().min(2).max(60).required(),
-  email: Joi.string().email().required(),
+  email: Joi.string().trim().lowercase().email().required(),
   password: Joi.string().min(6).required()
 });
 
@@ -26,7 +26,7 @@ export async function register(req, res, next) {
 }
 
 const loginSchema = Joi.object({
-  email: Joi.string().email().required(),
+  email: Joi.string().trim().lowercase().email().required(),
   password: Joi.string().required()
 });
 

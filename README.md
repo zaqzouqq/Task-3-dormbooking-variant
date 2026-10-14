@@ -14,7 +14,7 @@ Create `server/.env` yourself with:
 
 ```
 PORT=4000
-MONGO_URI=mongodb://tasks:pass1234@ac-j3acrgb-shard-00-00.lueesfz.mongodb.net:27017,ac-j3acrgb-shard-00-01.lueesfz.mongodb.net:27017,ac-j3acrgb-shard-00-02.lueesfz.mongodb.net:27017/?ssl=true&replicaSet=atlas-6to6iy-shard-0&authSource=admin&appName=Cluster0
+MONGO_URI=mongodb+srv://<username>:<password>@<cluster-host>/<database>?retryWrites=true&w=majority
 JWT_SECRET=change-me
 JWT_EXPIRES_IN=7d
 ```
@@ -30,6 +30,12 @@ node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
 Paste the output after `JWT_SECRET=` and restart the server. Changing the
 secret logs everyone out, because tokens signed with the old one stop being
 valid.
+
+Replace the `MONGO_URI` placeholders with the connection string from your
+MongoDB deployment. The API cannot start or accept logins until that database
+is reachable. Start the client and API together from the repository root with
+`npm run dev`. A doctor must create an account once from the **Register** page
+before signing in; login does not create accounts.
 
 ## What was added on top of Task 1
 

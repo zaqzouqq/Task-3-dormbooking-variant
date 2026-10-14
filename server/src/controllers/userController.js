@@ -3,7 +3,7 @@ import { User } from '../models/User.js';
 
 const updateSchema = Joi.object({
   name: Joi.string().min(2).max(60),
-  email: Joi.string().email()
+  email: Joi.string().trim().lowercase().email()
 });
 
 function publicUser(u) {
